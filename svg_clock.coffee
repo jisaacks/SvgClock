@@ -46,7 +46,7 @@ class SvgClock extends Backbone.View
     shadow_gradient.append("stop")
       .attr("offset","0%")
       .attr("style","stop-color:rgb(100,100,100);stop-opacity:.2")
-  
+
     shadow_gradient.append("stop")
       .attr("offset","60%")
       .attr("style","stop-color:rgb(255,255,255);stop-opacity:0")
@@ -71,18 +71,16 @@ class SvgClock extends Backbone.View
       hours.append("text")
         .text(i)
         .style("fill","#999")
+        .attr("text-anchor","middle")
         .attr("x", ->
           angle = i*30-90
-          bnd = @.getBBox()
-          pos = Math.cos(angle*Math.PI/180)*(d*.35)
-          pos -= bnd.width/2
+          pos = Math.cos(angle*Math.PI/180)*(d*.345)
           pos
         )
         .attr("y", ->
           angle = i*30-90
-          bnd = @.getBBox()
-          pos = Math.sin(angle*Math.PI/180)*(d*.35)
-          pos += bnd.height/3
+          pos = Math.sin(angle*Math.PI/180)*(d*.345)
+          pos += d*.03
           pos
         )
         
@@ -145,7 +143,7 @@ class SvgClock extends Backbone.View
     reflect_gradient.append("stop")
       .attr("offset","0%")
       .attr("style","stop-color:rgb(157,216,255);stop-opacity:.25")
-  
+
     reflect_gradient.append("stop")
       .attr("offset","60%")
       .attr("style","stop-color:rgb(157,216,255);stop-opacity:.05")
@@ -154,5 +152,6 @@ class SvgClock extends Backbone.View
       .attr("cx",d*.5)
       .attr("cy",d*.36)
       .attr("rx",d*.3)
-      .attr("ry",d*.2).style("fill","url(#reflect)")
+      .attr("ry",d*.2)
+      .style("fill","url(#reflect)")
       .style("stroke","none")
