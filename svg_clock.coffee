@@ -24,7 +24,7 @@ class SvgClock extends Backbone.View
     d = @diameter = opts.diameter || @_h()
     t = opts.time || new Date()
     
-    svg = d3.select("#clock").append("svg")
+    svg = d3.select(@el).append("svg")
     foc = svg.append("g")
     
     bg = foc.append("circle")
